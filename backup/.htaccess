@@ -1,0 +1,23 @@
+RewriteEngine On
+
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_URI} !\.(php|css|js|htc|png|gif|jpeg|jpg|ico)$
+
+RewriteCond %{REQUEST_URI} !(.*)/$
+
+RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+
+Redirect 301 /pastnews/empty/50/ https://починим-все.рф
+
+RewriteCond %{HTTPS} off [OR]
+
+RewriteCond %{HTTP_HOST} ^www\.
+
+RewriteRule (.*) https://починим-все.рф/$1 [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
